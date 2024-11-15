@@ -46,7 +46,10 @@ if uploaded_file is not None:
     x = x.reshape((1,) + x.shape)  # Reshape to (1, height, width, channels)
 
     # Set output directory for augmented images
-    output_dir = r"C:\Users\Ravi\OneDrive\Pictures\Images\New folder (2)"
+    #output_dir = r"C:\Users\Ravi\OneDrive\Pictures\Images\New folder (2)"
+    #os.makedirs(output_dir, exist_ok=True)
+
+    output_dir = os.path.join(os.getcwd(), "output_images")
     os.makedirs(output_dir, exist_ok=True)
 
     # Generate augmented images and display one of them
@@ -66,5 +69,5 @@ if uploaded_file is not None:
     for file in augmented_files:
         augmented_img_path = os.path.join(output_dir, file)
         augmented_img = Image.open(augmented_img_path)
-        st.image(augmented_img, caption=f"Augmented Image: {file}", use_column_width=True)
+        st.image(augmented_img, caption=f"Augmented Image: {file}", use_container_width =True)
 
